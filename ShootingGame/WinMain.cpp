@@ -1,8 +1,14 @@
 #include <windows.h>
 #include <time.h>
+#include "SceneManager.h"
+#include "GameManager.h"
+#include <atlimage.h>
 
 #define szWindowClass	TEXT("First")
 #define szTitle			TEXT("First App")
+
+CSceneManager *SM;
+CGameManager *GM;
 
 LRESULT CALLBACK WndProc( HWND hWnd
 						 , UINT message
@@ -69,6 +75,10 @@ int APIENTRY WinMain( HINSTANCE hInstance,
 			HBITMAP memoryBitmap = CreateCompatibleBitmap(hdc, 800, 600);
 			SelectObject(memoryDC, memoryBitmap);
 
+
+			SM->drawScene(hdc);
+
+			
 			//ManagerµéÀÇ logic
 			//SceneStackManager->GetCurrentScene()->DrawScene(memoryDC);
 			//GameRuleManager->GetKeyInput();
@@ -98,7 +108,10 @@ LRESULT CALLBACK WndProc( HWND hWnd
 	switch(message)
 	{
 	case WM_CREATE:
-
+	{
+		GM = new CGameManager;
+		SM = new CSceneManager;
+	}
 		break;
 	case WM_PAINT:
 		{
