@@ -10,3 +10,9 @@ CFlight::CFlight()
 CFlight::~CFlight()
 {
 }
+
+void CFlight::Shot()
+{
+
+}
+

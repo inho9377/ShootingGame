@@ -1,10 +1,14 @@
-#pragma once
+
 #include "Object.h"
-class CFlight :
-	public Object
+#pragma once
+class CFlight : public Object
 {
 public:
 	CFlight();
 	~CFlight();
-};
 
+	void Shot();
+
+
+	double speed = 1.0;
+};

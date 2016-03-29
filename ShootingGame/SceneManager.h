@@ -1,8 +1,10 @@
 #pragma once
 #include <windows.h>
-#include<vector>
+#include<list>
 #include "Object.h"
-typedef std::vector<Object> SCENE;
+
+//그려야하는 Object들의 List를 Scene으로 정의
+typedef std::list<Object*> SCENE;
 
 class CSceneManager
 {
@@ -13,7 +15,7 @@ public:
 	
 	void drawScene(HDC hdc);
 	SCENE GetCurrentScene() { return CurrentScene; }
-	void AddObjectToScene(const Object &object) { CurrentScene.push_back(object); }
+	void AddObjectToScene(Object *object) { CurrentScene.push_back(object); }
 
 private:
 	SCENE CurrentScene;

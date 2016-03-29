@@ -159,6 +159,7 @@
     <ClInclude Include="ControlManager.h" />
     <ClInclude Include="Flight.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="MyInput.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PlayerFlight.h" />
     <ClInclude Include="Point.h" />

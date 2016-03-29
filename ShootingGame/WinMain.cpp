@@ -3,13 +3,16 @@
 #include "SceneManager.h"
 #include "GameManager.h"
 #include <atlimage.h>
+#include "BackGround.h"
+#include "PlayerFlight.h"
 
 #define szWindowClass	TEXT("First")
 #define szTitle			TEXT("First App")
 
 CSceneManager *SM;
 CGameManager *GM;
-
+CBackGround *background;
+CPlayerFlight *player;
 LRESULT CALLBACK WndProc( HWND hWnd
 						 , UINT message
 						 , WPARAM wParam
@@ -70,20 +73,19 @@ int APIENTRY WinMain( HINSTANCE hInstance,
 		{
 			HDC hdc = GetDC(hWnd);
 
-			//메모리 버퍼 생성
+			//더블 버퍼링을 위한 메모리 버퍼
 			HDC      memoryDC = CreateCompatibleDC(hdc);
 			HBITMAP memoryBitmap = CreateCompatibleBitmap(hdc, 800, 600);
 			SelectObject(memoryDC, memoryBitmap);
 
 
-			SM->drawScene(hdc);
+			//background->draw(memoryDC);
+			//player->draw(memoryDC);
 
+			SM->drawScene(memoryDC);
+			GM->SetCurrentKey();
+			GM->PlayerAct();
 			
-			//Manager들의 logic
-			//SceneStackManager->GetCurrentScene()->DrawScene(memoryDC);
-			//GameRuleManager->GetKeyInput();
-			//GameRuleManager->DoCharacterAction();
-
 			BitBlt(hdc, 0, 0, 800, 600, memoryDC, 0, 0, SRCCOPY);
 
 			DeleteObject(memoryBitmap);
@@ -111,6 +113,14 @@ LRESULT CALLBACK WndProc( HWND hWnd
 	{
 		GM = new CGameManager;
 		SM = new CSceneManager;
+
+
+		background = new CBackGround();
+		SM->AddObjectToScene(background);
+		player = new CPlayerFlight();
+		SM->AddObjectToScene(player);
+		GM->SetPlayerFlight(player);
+		
 	}
 		break;
 	case WM_PAINT:
@@ -122,6 +132,9 @@ LRESULT CALLBACK WndProc( HWND hWnd
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
+		delete GM;
+		delete SM;
+		delete background;
 		return 0;
 	}
 
