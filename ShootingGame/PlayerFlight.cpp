@@ -17,6 +17,11 @@ CPlayerFlight::CPlayerFlight()
 	SetFileLocation(backGroundPath);
 
 	GetCimage()->Load(backGroundPath);
+
+	for (int tmp = 0; tmp < num_bullet; tmp++)
+	{
+		BulletList.push(new CBullet);
+	}
 }
 
 CPlayerFlight::~CPlayerFlight()
