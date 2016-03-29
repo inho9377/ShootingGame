@@ -9,6 +9,7 @@
 #define szWindowClass	TEXT("First")
 #define szTitle			TEXT("First App")
 
+//전역변수를 줄이는 방법이 없을까..
 CSceneManager *SM;
 CGameManager *GM;
 CBackGround *background;

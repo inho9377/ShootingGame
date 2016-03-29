@@ -3,6 +3,7 @@
 
 CPlayerFlight::CPlayerFlight()
 {
+	//파일 이름 설정
 	SetCimage(new CImage);
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
@@ -20,7 +21,8 @@ CPlayerFlight::CPlayerFlight()
 
 	for (int tmp = 0; tmp < num_bullet; tmp++)
 	{
-		BulletList.push(new CBullet);
+		//BulletSprite 제작 까지 잠시..
+		//BulletList.push(new CBullet);
 	}
 }
 
@@ -31,8 +33,10 @@ CPlayerFlight::~CPlayerFlight()
 
 void CPlayerFlight::SetPositionWithSpeed(int myinput)
 {
+	//플레이어의 비행기가 화면 안쪽에 있으면
 	if (!IsOutOfScreen())
 	{
+		//키보드 입력에 따라 움직임
 		switch (myinput)
 		{
 		case VK_UP:
@@ -54,9 +58,10 @@ void CPlayerFlight::SetPositionWithSpeed(int myinput)
 			break;
 		}
 	}
-
+	//화면 바깥에 있으면
 	else
 	{
+		//조작에도 움직이지 않도록 위치를 돌려놓음
 		switch (InfoOutOfScreen())
 		{
 		case Object::info_out_of_screen::LEFT_OVER:

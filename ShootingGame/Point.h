@@ -1,4 +1,6 @@
 #pragma once
+
+//2D게임이므로 편의상 만든 점(x,y)클래스
 class Point
 {
 public:

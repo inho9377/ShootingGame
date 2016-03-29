@@ -11,6 +11,7 @@ CGameManager::~CGameManager()
 {
 }
 
+//√ ±‚»≠
 void CGameManager::Init()
 {
 	CBackGround *background = new CBackGround();
