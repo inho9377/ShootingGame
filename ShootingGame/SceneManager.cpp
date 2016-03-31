@@ -36,3 +36,4 @@ void CSceneManager::drawScene(HDC hdc)
 	//Scene에 존재하는 모든 Object들을 그려준다.
 	
 }
+
