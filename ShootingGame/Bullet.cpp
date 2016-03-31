@@ -18,7 +18,7 @@ CBullet::CBullet()
 
 	SetFileLocation(Bulletpath);
 
-	GetCimage()->Load(Bulletpath);
+	GetDrawImage()->Load(Bulletpath);
 }
 
 
@@ -38,7 +38,7 @@ CBullet::CBullet(Point bulletPoint)
 
 	SetFileLocation(Bulletpath);
 
-	GetCimage()->Load(Bulletpath);
+	GetDrawImage()->Load(Bulletpath);
 	SetCurrentPosition(bulletPoint);
 }
 
@@ -53,4 +53,29 @@ void CBullet::ShotTo()
 		move(0, shot_speed);
 	else
 		delete this; //너무 느려지지 않을까..?
+}
+
+void CBullet::ShotToDirection(Point goal)
+{
+
+	if (IsOutOfScreen() || IsCrashTarget())
+	{
+		delete this;
+		return;
+	}
+
+	double distance = this->GetCenter().GetDistanceTwoPoint(GetCenter(), goal);
+
+	double bullet_setting_x = (goal.GetX() - GetCenter().GetX()) / distance * shot_speed;
+	double bullet_setting_y = (goal.GetY() - GetCenter().GetY()) / distance * shot_speed;
+
+	this->SetCurrentPosition(bullet_setting_x, bullet_setting_y);
+
+}
+
+
+//총탄이 적에게 맞았는가.
+bool CBullet::IsCrashTarget()
+{
+	return false;
 }

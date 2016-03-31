@@ -1,7 +1,6 @@
 #include "Object.h"
 
 
-
 Object::Object()
 {
 	
@@ -11,25 +10,25 @@ Object::Object()
 
 Object::Object(WCHAR re[], double currentPosX=0.0, double currentPosY=0.0)
 {
-	Cimage = new CImage;
+	DrawImage = new CImage;
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR backGroundPath[256];
 	wcscpy_s(backGroundPath, path);
 	wcscat_s(backGroundPath, re);
 	wcscpy_s(fileLocation, backGroundPath);
-	Cimage->Load(backGroundPath);
+	DrawImage->Load(backGroundPath);
 }
 
 
 Object::~Object()
 {
-	GetCimage()->Destroy();
+	GetDrawImage()->Destroy();
 }
 
 void Object::draw(HDC hdc)
 {
-	Cimage->BitBlt(hdc, this->CurrentPosition.GetX(), this->CurrentPosition.GetY(), SRCCOPY);
+	DrawImage->BitBlt(hdc, this->CurrentPosition.GetX(), this->CurrentPosition.GetY(), SRCCOPY);
 }
 
 
@@ -78,5 +77,16 @@ Object::info_out_of_screen Object::InfoOutOfScreen()
 		return info_out_of_screen::UP_OVER;
 
 	return info_out_of_screen::IN_SCREEN;
+}
+
+//특정 object와 충돌여부 판정
+bool Object::IsCollision(Object &obj)
+{
+	double distance = this->GetCenter().GetDistanceTwoPoint(this->GetCenter(), obj.GetCenter());
+
+	if (distance < (this->GetRadian() + obj.GetRadian()))
+		return true;
+
+	return false;
 }
 

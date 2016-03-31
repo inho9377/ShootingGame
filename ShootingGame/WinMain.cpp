@@ -10,7 +10,7 @@
 #define szTitle			TEXT("First App")
 
 //전역변수를 줄이는 방법이 없을까..
-CSceneManager *SM;
+//CSceneManager *SM;
 CGameManager *GM;
 CBackGround *background;
 CPlayerFlight *player;
@@ -83,7 +83,7 @@ int APIENTRY WinMain( HINSTANCE hInstance,
 			//background->draw(memoryDC);
 			//player->draw(memoryDC);
 
-			SM->drawScene(memoryDC);
+			CSceneManager::GetInstance()->drawScene(memoryDC);
 			GM->SetCurrentKey();
 			GM->PlayerAct();
 			
@@ -113,13 +113,13 @@ LRESULT CALLBACK WndProc( HWND hWnd
 	case WM_CREATE:
 	{
 		GM = new CGameManager;
-		SM = new CSceneManager;
+		
 
 
 		background = new CBackGround();
-		SM->AddObjectToScene(background);
+		CSceneManager::GetInstance()->AddObjectToGameScene(background);
 		player = new CPlayerFlight();
-		SM->AddObjectToScene(player);
+		CSceneManager::GetInstance()->AddObjectToGameScene(player);
 		GM->SetPlayerFlight(player);
 		
 	}
@@ -134,7 +134,7 @@ LRESULT CALLBACK WndProc( HWND hWnd
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		delete GM;
-		delete SM;
+		//delete SM;
 		delete background;
 		return 0;
 	}

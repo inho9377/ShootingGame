@@ -17,7 +17,7 @@ CPlayerFlight::CPlayerFlight()
 
 	SetFileLocation(backGroundPath);
 
-	GetCimage()->Load(backGroundPath);
+	GetDrawImage()->Load(backGroundPath);
 
 	for (int tmp = 0; tmp < num_bullet; tmp++)
 	{

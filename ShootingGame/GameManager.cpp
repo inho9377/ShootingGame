@@ -33,6 +33,7 @@ void CGameManager::SettleDirectory()
 	wcscpy_s(backGroundPath, path);
 	wcscat_s(backGroundPath, L"/Image/sky.bmp");
 	
+
 }
 
 
@@ -41,6 +42,7 @@ void CGameManager::SetCurrentKey()
 	myInput.KeyboardProcess();
 
 	currentKey = NULL;
+
 	if (myInput.GetKey(VK_UP))
 		currentKey = VK_UP;
 
@@ -60,6 +62,34 @@ void CGameManager::SetCurrentKey()
 
 void CGameManager::PlayerAct()
 {
+	if (currentKey == VK_SPACE)
+	{
+		ShotFromPlayer();
+		return;
+	}
+
+
 	if(currentKey)
 		player->SetPositionWithSpeed(currentKey);
+
+
+	for each (CBullet* bullet in bullet_list)
+	{
+		
+	}
+
+
 }
+
+void CGameManager::ShotFromPlayer()
+{
+	bullet_list.push_back(new CBullet);
+
+
+}
+
+void CGameManager::ShotToPlayer()
+{
+
+}
+

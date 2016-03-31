@@ -1,6 +1,8 @@
 #pragma once
 #include"MyInput.h"
+#include <list>
 #include "PlayerFlight.h"
+#include "Bullet.h"
 
 //Game의 로직과 컨트롤을 담당하는 클래스
 //Object들의 위치정보, 충돌체크등을 다루기에 모든 오브젝트들을 갖고있어야되는데..
@@ -21,12 +23,16 @@ public:
 
 	//키보드 입력 상태
 	CMyInput myInput;
-	void SetPlayerFlight(CPlayerFlight *r)
-	{this->player = r;}
-
+	void SetPlayerFlight(CPlayerFlight *r) {this->player = r;}
+	void ShotFromPlayer();
+	void ShotToPlayer();
+	void ProcedeBullet();
 
 private:
 	int currentKey;
 	CPlayerFlight *player;
+	std::list<CBullet*> bullet_list;
+
+
 };
 

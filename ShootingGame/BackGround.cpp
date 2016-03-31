@@ -19,7 +19,7 @@ CBackGround::CBackGround()
 	
 	SetFileLocation(backGroundPath);
 
-	GetCimage()->Load(backGroundPath);
+	GetDrawImage()->Load(backGroundPath);
 	
 	
 }
