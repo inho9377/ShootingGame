@@ -23,16 +23,14 @@ public:
 
 	//키보드 입력 상태
 	CMyInput myInput;
-	void SetPlayerFlight(CPlayerFlight *r) {this->player = r;}
+	void SetPlayerFlight(std::shared_ptr<CPlayerFlight>r) {this->player = r;}
 	void ShotFromPlayer();
 	void ShotToPlayer();
 	void ProcedeBullet();
 
 private:
 	int currentKey;
-	CPlayerFlight *player;
-	std::list<CBullet*> bullet_list;
-
-
+	std::shared_ptr<CPlayerFlight> player;
+	std::list<std::shared_ptr<CBullet>> bullet_list;
 };
 

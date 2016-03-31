@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <atlimage.h>
 #include "Point.h"
-//#include "SceneManager.h"
+#include <memory>
 
 //무언가 그려지는 대상의 클래스
 //Flight, Bullet, Background등의 base
@@ -36,9 +36,9 @@ public:
 	Point GetCurrentPosition() { return CurrentPosition; }
 	void SetFileLocation(WCHAR loc[]) { wcscpy_s(fileLocation, loc);}
 
-	CImage* GetDrawImage() { return DrawImage; }
+	std::shared_ptr<CImage> GetDrawImage() { return DrawImage; }
 
-	void SetCimage(CImage* c){ DrawImage = c; }
+	void SetCimage(std::shared_ptr<CImage> c){ DrawImage = c; }
 	
 	//이미지를 해당 위치 '만큼'이동시킨다.
 	virtual void move(double x, double y);
@@ -68,7 +68,7 @@ private:
 
 	//오브젝트가 가지는 이미지의 파일 위치
 	WCHAR fileLocation[256];
-	CImage *DrawImage;
+	std::shared_ptr<CImage> DrawImage;
 
 	//충돌체크를 위한 변수들(원으로 가정)
 	Point center;

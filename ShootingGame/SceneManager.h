@@ -2,9 +2,10 @@
 #include <windows.h>
 #include<list>
 #include "Object.h"
+#include <memory>
 
 //그려야하는 Object들의 List를 Scene으로 정의
-typedef std::list<Object*> SCENE;
+typedef std::list<std::shared_ptr<Object>> SCENE;
 
 
 //SingleTon Class.
@@ -25,16 +26,16 @@ public:
 	static CSceneManager* GetInstance();
 
 	void drawScene(HDC hdc);
-	SCENE* GetGameScene() { return GameScene; }
+	std::shared_ptr<SCENE> GetGameScene() { return GameScene; }
 
 	//그려야하는 Object들을 Scene에 추가한다.
 	//반드시 BackGround가 먼저 추가되야함!
-	void AddObjectToGameScene(Object *object) { GameScene->push_back(object); }
-	void AddObjectToStartScene(Object *object) { StartScene->push_back(object); }
-	void AddObjectToScoreScene(Object *object) { ScoreScene->push_back(object); }
+	void AddObjectToGameScene(std::shared_ptr<Object> object) { GameScene->push_back(object); }
+	void AddObjectToStartScene(std::shared_ptr<Object> object) { StartScene->push_back(object); }
+	void AddObjectToScoreScene(std::shared_ptr<Object> object) { ScoreScene->push_back(object); }
 
 
-	void SceneChange(SCENE* goal) { CurrentScene = goal; }
+	void SceneChange(std::shared_ptr<SCENE> goal) { CurrentScene = goal; }
 	
 	//static CSceneManager& GetInstance() {
 	//	return instance;
@@ -42,16 +43,13 @@ public:
 
 private:
 	//현재 그려져야할 Scene
-	SCENE *CurrentScene;
-
-	SCENE *GameScene;
-	SCENE *StartScene;
-	SCENE *ScoreScene;
+	std::shared_ptr<SCENE> CurrentScene;
+	std::shared_ptr<SCENE> GameScene;
+	std::shared_ptr<SCENE> StartScene;
+	std::shared_ptr<SCENE> ScoreScene;
 
 	
 };
 
 
 
-
-//CSceneManager* CSceneManager::instance = nullptr;

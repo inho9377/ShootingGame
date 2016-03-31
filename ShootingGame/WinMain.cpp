@@ -10,10 +10,10 @@
 #define szTitle			TEXT("First App")
 
 //전역변수를 줄이는 방법이 없을까..
-//CSceneManager *SM;
-CGameManager *GM;
-CBackGround *background;
-CPlayerFlight *player;
+std::shared_ptr<CPlayerFlight> player;
+std::shared_ptr<CGameManager> GM;
+std::shared_ptr<CBackGround> background;
+
 LRESULT CALLBACK WndProc( HWND hWnd
 						 , UINT message
 						 , WPARAM wParam
@@ -112,13 +112,13 @@ LRESULT CALLBACK WndProc( HWND hWnd
 	{
 	case WM_CREATE:
 	{
-		GM = new CGameManager;
+		GM = std::make_shared<CGameManager>(new CGameManager);
 		
 
 
-		background = new CBackGround();
+		background = std::make_shared<CBackGround>(new CBackGround);
 		CSceneManager::GetInstance()->AddObjectToGameScene(background);
-		player = new CPlayerFlight();
+		player = std::make_shared<CPlayerFlight>(new CPlayerFlight);
 		CSceneManager::GetInstance()->AddObjectToGameScene(player);
 		GM->SetPlayerFlight(player);
 		
@@ -133,9 +133,9 @@ LRESULT CALLBACK WndProc( HWND hWnd
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
-		delete GM;
+		//delete GM;
 		//delete SM;
-		delete background;
+		//delete background;
 		return 0;
 	}
 

@@ -5,7 +5,7 @@
 CBullet::CBullet()
 {
 	//파일 위치 지정
-	SetCimage(new CImage);
+	SetCimage(std::make_shared<CImage>(new CImage));
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR Bulletpath[256];
@@ -25,7 +25,7 @@ CBullet::CBullet()
 CBullet::CBullet(Point bulletPoint)
 {
 	//파일 위치 지정
-	SetCimage(new CImage);
+	SetCimage(std::make_shared<CImage>(new CImage));
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR Bulletpath[256];
@@ -52,7 +52,7 @@ void CBullet::ShotTo()
 	if (!IsOutOfScreen())
 		move(0, shot_speed);
 	else
-		delete this; //너무 느려지지 않을까..?
+		//delete this; //너무 느려지지 않을까..?
 }
 
 void CBullet::ShotToDirection(Point goal)
@@ -60,7 +60,7 @@ void CBullet::ShotToDirection(Point goal)
 
 	if (IsOutOfScreen() || IsCrashTarget())
 	{
-		delete this;
+		//delete this;
 		return;
 	}
 

@@ -4,7 +4,7 @@
 CPlayerFlight::CPlayerFlight()
 {
 	//파일 이름 설정
-	SetCimage(new CImage);
+	SetCimage(std::make_shared<CImage>(new CImage));
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR backGroundPath[256];

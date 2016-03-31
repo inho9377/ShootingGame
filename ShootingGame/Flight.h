@@ -11,7 +11,6 @@ public:
 
 	void Shot();
 
-	CBullet* bullet;
-	std::stack<CBullet*> BulletList;
+	
 	double speed = 1.0;
 };

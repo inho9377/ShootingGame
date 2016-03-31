@@ -4,9 +4,9 @@ CSceneManager* CSceneManager::instace = nullptr;
 
 CSceneManager::CSceneManager()
 {
-	GameScene = new SCENE;
-	StartScene = new SCENE;
-	ScoreScene = new SCENE;
+	GameScene = std::make_shared<SCENE>(new SCENE);
+	StartScene = std::make_shared<SCENE>(new SCENE);
+	ScoreScene = std::make_shared<SCENE>(new SCENE);
 
 	//AddObjectToStartScene(new Object);
 	CurrentScene = GameScene;
@@ -29,6 +29,7 @@ void CSceneManager::drawScene(HDC hdc)
 	iter != CurrentScene->end();
 	iter++)
 	{
+		
 		(*iter)->draw(hdc);
 	}
 

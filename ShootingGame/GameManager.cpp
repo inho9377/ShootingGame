@@ -14,11 +14,8 @@ CGameManager::~CGameManager()
 //ÃÊ±âÈ­
 void CGameManager::Init()
 {
-	CBackGround *background = new CBackGround();
-	
 
 
-	SettleDirectory();
 }
 
 void CGameManager::SettleDirectory()
@@ -73,7 +70,7 @@ void CGameManager::PlayerAct()
 		player->SetPositionWithSpeed(currentKey);
 
 
-	for each (CBullet* bullet in bullet_list)
+	for each (std::shared_ptr<CBullet> bullet in bullet_list)
 	{
 		
 	}
@@ -83,7 +80,7 @@ void CGameManager::PlayerAct()
 
 void CGameManager::ShotFromPlayer()
 {
-	bullet_list.push_back(new CBullet);
+	bullet_list.push_back(std::make_shared<CBullet>(new CBullet));
 
 
 }
