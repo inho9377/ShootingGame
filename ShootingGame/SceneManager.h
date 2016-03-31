@@ -30,9 +30,9 @@ public:
 
 	//그려야하는 Object들을 Scene에 추가한다.
 	//반드시 BackGround가 먼저 추가되야함!
-	void AddObjectToGameScene(std::shared_ptr<Object> object) { GameScene->push_back(object); }
-	void AddObjectToStartScene(std::shared_ptr<Object> object) { StartScene->push_back(object); }
-	void AddObjectToScoreScene(std::shared_ptr<Object> object) { ScoreScene->push_back(object); }
+	void AddObjectToGameScene(std::shared_ptr<Object> object) { GameScene->emplace_back(object); }
+	void AddObjectToStartScene(std::shared_ptr<Object> object) { StartScene->emplace_back(object); }
+	void AddObjectToScoreScene(std::shared_ptr<Object> object) { ScoreScene->emplace_back(object); }
 
 
 	void SceneChange(std::shared_ptr<SCENE> goal) { CurrentScene = goal; }

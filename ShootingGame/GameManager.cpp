@@ -80,7 +80,7 @@ void CGameManager::PlayerAct()
 
 void CGameManager::ShotFromPlayer()
 {
-	bullet_list.push_back(std::make_shared<CBullet>());
+	bullet_list.emplace_back(std::make_shared<CBullet>());
 
 
 }
