@@ -10,7 +10,7 @@ Object::Object()
 
 Object::Object(WCHAR re[], double currentPosX=0.0, double currentPosY=0.0)
 {
-	DrawImage = std::make_shared<CImage>(new CImage);
+	DrawImage = std::make_shared<CImage>(new CImage());
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR backGroundPath[256];

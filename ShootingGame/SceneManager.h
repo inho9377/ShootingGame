@@ -12,18 +12,18 @@ typedef std::list<std::shared_ptr<Object>> SCENE;
 
 //View를 조작하는 클래스. 그려야하는 Object들을 돌면서 화면에 각각 그려냄
 //그래서 Object들의 list를 갖고있어야하는데..
-class CSceneManager
+class CSceneManagerSingleton
 {
 
 private:
-	CSceneManager();
-	CSceneManager(const CSceneManager& other);
+	CSceneManagerSingleton();
+	CSceneManagerSingleton(const CSceneManagerSingleton& other);
 	//~CSceneManager();
-	static CSceneManager* instace;
+	static CSceneManagerSingleton* instace;
 
 
 public:
-	static CSceneManager* GetInstance();
+	static CSceneManagerSingleton* GetInstance();
 
 	void drawScene(HDC hdc);
 	std::shared_ptr<SCENE> GetGameScene() { return GameScene; }

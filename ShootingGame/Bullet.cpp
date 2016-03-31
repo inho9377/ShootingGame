@@ -5,7 +5,7 @@
 CBullet::CBullet()
 {
 	//파일 위치 지정
-	SetCimage(std::make_shared<CImage>(new CImage));
+	SetCimage(std::make_shared<CImage>(new CImage()));
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR Bulletpath[256];
@@ -25,7 +25,7 @@ CBullet::CBullet()
 CBullet::CBullet(Point bulletPoint)
 {
 	//파일 위치 지정
-	SetCimage(std::make_shared<CImage>(new CImage));
+	SetCimage(std::make_shared<CImage>(new CImage()));
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR Bulletpath[256];
@@ -51,7 +51,7 @@ void CBullet::ShotTo()
 	//총탄이 화면 바깥으로 나갈때까지 일직선으로 움직임
 	if (!IsOutOfScreen())
 		move(0, shot_speed);
-	else
+	else;
 		//delete this; //너무 느려지지 않을까..?
 }
 

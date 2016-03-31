@@ -1,12 +1,12 @@
 #include "SceneManager.h"
 
-CSceneManager* CSceneManager::instace = nullptr;
+CSceneManagerSingleton* CSceneManagerSingleton::instace = nullptr;
 
-CSceneManager::CSceneManager()
+CSceneManagerSingleton::CSceneManagerSingleton()
 {
-	GameScene = std::make_shared<SCENE>(new SCENE);
-	StartScene = std::make_shared<SCENE>(new SCENE);
-	ScoreScene = std::make_shared<SCENE>(new SCENE);
+	GameScene = std::make_shared<SCENE>(new SCENE());
+	StartScene = std::make_shared<SCENE>(new SCENE());
+	ScoreScene = std::make_shared<SCENE>(new SCENE());
 
 	//AddObjectToStartScene(new Object);
 	CurrentScene = GameScene;
@@ -14,15 +14,15 @@ CSceneManager::CSceneManager()
 }
 
 
-CSceneManager* CSceneManager::GetInstance()
+CSceneManagerSingleton* CSceneManagerSingleton::GetInstance()
 {
 	if (instace == nullptr)
-		instace = new CSceneManager();
+		instace = new CSceneManagerSingleton();
 
 	return instace;
 }
 
-void CSceneManager::drawScene(HDC hdc)
+void CSceneManagerSingleton::drawScene(HDC hdc)
 {
 
 	for (SCENE::iterator iter = CurrentScene->begin();

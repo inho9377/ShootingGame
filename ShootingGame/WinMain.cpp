@@ -83,7 +83,7 @@ int APIENTRY WinMain( HINSTANCE hInstance,
 			//background->draw(memoryDC);
 			//player->draw(memoryDC);
 
-			CSceneManager::GetInstance()->drawScene(memoryDC);
+			CSceneManagerSingleton::GetInstance()->drawScene(memoryDC);
 			GM->SetCurrentKey();
 			GM->PlayerAct();
 			
@@ -112,14 +112,14 @@ LRESULT CALLBACK WndProc( HWND hWnd
 	{
 	case WM_CREATE:
 	{
-		GM = std::make_shared<CGameManager>(new CGameManager);
+		GM = std::make_shared<CGameManager>(new CGameManager());
 		
 
 
-		background = std::make_shared<CBackGround>(new CBackGround);
-		CSceneManager::GetInstance()->AddObjectToGameScene(background);
-		player = std::make_shared<CPlayerFlight>(new CPlayerFlight);
-		CSceneManager::GetInstance()->AddObjectToGameScene(player);
+		background = std::make_shared<CBackGround>(new CBackGround());
+		CSceneManagerSingleton::GetInstance()->AddObjectToGameScene(background);
+		player = std::make_shared<CPlayerFlight>(new CPlayerFlight());
+		CSceneManagerSingleton::GetInstance()->AddObjectToGameScene(player);
 		GM->SetPlayerFlight(player);
 		
 	}
