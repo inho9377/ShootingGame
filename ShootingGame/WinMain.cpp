@@ -112,13 +112,13 @@ LRESULT CALLBACK WndProc( HWND hWnd
 	{
 	case WM_CREATE:
 	{
-		GM = std::make_shared<CGameManager>(new CGameManager());
+		GM = std::make_shared<CGameManager>();
 		
 
 
-		background = std::make_shared<CBackGround>(new CBackGround());
+		background = std::make_shared<CBackGround>();
 		CSceneManagerSingleton::GetInstance()->AddObjectToGameScene(background);
-		player = std::make_shared<CPlayerFlight>(new CPlayerFlight());
+		player = std::make_shared<CPlayerFlight>();
 		CSceneManagerSingleton::GetInstance()->AddObjectToGameScene(player);
 		GM->SetPlayerFlight(player);
 		

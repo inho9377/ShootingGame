@@ -5,7 +5,7 @@
 CBullet::CBullet()
 {
 	//파일 위치 지정
-	SetCimage(std::make_shared<CImage>(new CImage()));
+	SetCimage(std::make_shared<CImage>());
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR Bulletpath[256];
@@ -25,7 +25,7 @@ CBullet::CBullet()
 CBullet::CBullet(Point bulletPoint)
 {
 	//파일 위치 지정
-	SetCimage(std::make_shared<CImage>(new CImage()));
+	SetCimage(std::make_shared<CImage>());
 	WCHAR path[256];
 	GetCurrentDirectory(sizeof(path), path);
 	WCHAR Bulletpath[256];

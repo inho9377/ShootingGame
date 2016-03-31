@@ -4,9 +4,9 @@ CSceneManagerSingleton* CSceneManagerSingleton::instace = nullptr;
 
 CSceneManagerSingleton::CSceneManagerSingleton()
 {
-	GameScene = std::make_shared<SCENE>(new SCENE());
-	StartScene = std::make_shared<SCENE>(new SCENE());
-	ScoreScene = std::make_shared<SCENE>(new SCENE());
+	GameScene = std::make_shared<SCENE>();
+	StartScene = std::make_shared<SCENE>();
+	ScoreScene = std::make_shared<SCENE>();
 
 	//AddObjectToStartScene(new Object);
 	CurrentScene = GameScene;
