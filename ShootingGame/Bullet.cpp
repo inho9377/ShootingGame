@@ -70,7 +70,7 @@ void CBullet::ShotToDirection(Point goal)
 	double bullet_setting_y = (goal.GetY() - GetCenter().GetY()) / distance * shot_speed;
 
 	this->SetCurrentPosition(bullet_setting_x, bullet_setting_y);
-
+	//this->SetCurrentPosition(50, 50);
 }
 
 

@@ -30,9 +30,6 @@
     <ClCompile Include="Flight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ControlManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerFlight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">

@@ -24,9 +24,13 @@ public:
 	//키보드 입력 상태
 	CMyInput myInput;
 	void SetPlayerFlight(std::shared_ptr<CPlayerFlight>r) {this->player = r;}
+	auto GetPlayerFlight() { return player; }
 	void ShotFromPlayer();
 	void ShotToPlayer();
 	void ProcedeBullet();
+
+	const int winsizeX = 800;
+	const int winsizeY = 600;
 
 private:
 	int currentKey;
