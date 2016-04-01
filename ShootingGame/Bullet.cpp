@@ -73,6 +73,11 @@ void CBullet::ShotToDirection(Point goal)
 	//this->SetCurrentPosition(50, 50);
 }
 
+void CBullet::ShotByFunc()
+{
+
+}
+
 
 //총탄이 적에게 맞았는가.
 bool CBullet::IsCrashTarget()

@@ -1,5 +1,5 @@
 #include "GameManager.h"
-#include "BackGround.h"
+
 
 
 CGameManager::CGameManager()
@@ -81,12 +81,13 @@ void CGameManager::PlayerAct()
 
 void CGameManager::ShotFromPlayer()
 {
-	std::shared_ptr<CBullet> bullet = std::make_shared<CBullet>();
+	auto bullet = std::make_shared<CBullet>();
 	Point Goal;
 	Goal.SetX(winsizeX);
 	Goal.SetY(GetPlayerFlight()->GetCurrentPosition().GetY());
 	bullet->SetGoalPosition(Goal);
 	bullet_list.emplace_back(bullet);
+	CSceneManagerSingleton::GetInstance()->AddObjectToGameScene(bullet);
 
 
 }

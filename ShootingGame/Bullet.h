@@ -33,6 +33,7 @@ public:
 	Point GetGoalPosition() { return Goal_Position; }
 	void SetGoalPosition(Point set) { Goal_Position = set; }
 
+	void ShotByFunc();
 
 private:
 
