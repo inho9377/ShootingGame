@@ -72,7 +72,8 @@ void CGameManager::PlayerAct()
 
 	for each (std::shared_ptr<CBullet> bullet in bullet_list)
 	{
-		bullet->ShotToDirection(bullet->GetGoalPosition());
+		bullet->ShotTo();
+		//bullet->ShotToDirection(bullet->GetGoalPosition());
 
 	}
 
@@ -81,7 +82,7 @@ void CGameManager::PlayerAct()
 
 void CGameManager::ShotFromPlayer()
 {
-	auto bullet = std::make_shared<CBullet>();
+	auto bullet = std::make_shared<CBullet>(player->GetCurrentPosition());
 	Point Goal;
 	Goal.SetX(winsizeX);
 	Goal.SetY(GetPlayerFlight()->GetCurrentPosition().GetY());
